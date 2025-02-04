@@ -1,5 +1,5 @@
 {
-    "name": "backoffice/confluence-api-wrapper",
+    "name": "jdelon02/confluence-api-wrapper",
     "description": "A PHP wrapper for interacting with the Confluence REST API.",
     "type": "library",
     "license": "MIT",

@@ -9,7 +9,7 @@
     },
     "autoload": {
       "psr-4": {
-        "YourVendor\\ConfluenceApiWrapper\\": "src/"
+        "jdelon02\\ConfluenceApiWrapper\\": "src/"
       }
     }
   }

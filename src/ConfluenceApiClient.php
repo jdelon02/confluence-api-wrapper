@@ -43,4 +43,30 @@ class ConfluenceApiClient {
       throw new \Exception('Error fetching Confluence content: ' . $e->getMessage());
     }
   }
+
+  public function getPageHierarchy($spaceKey) {
+    $cacheKey = "confluence_page_hierarchy_{$spaceKey}";
+    if ($this->cache && $cachedData = $this->cache->get($cacheKey)) {
+      return $cachedData;
+    }
+  
+    $url = $this->baseUri . '/rest/api/space/' . $spaceKey . '/content/page?expand=children.page';
+    try {
+      $response = $this->client->get($url, [
+        'headers' => [
+          'Authorization' => 'Basic ' . $this->authToken,
+          'Accept' => 'application/json',
+        ],
+      ]);
+      $data = json_decode($response->getBody(), true);
+  
+      if ($this->cache) {
+        $this->cache->set($cacheKey, $data);
+      }
+  
+      return $data;
+    } catch (RequestException $e) {
+      throw new \Exception('Error fetching Confluence page hierarchy: ' . $e->getMessage());
+    }
+  }
 }

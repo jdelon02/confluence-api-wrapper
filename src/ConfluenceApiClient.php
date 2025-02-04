@@ -69,4 +69,30 @@ class ConfluenceApiClient {
       throw new \Exception('Error fetching Confluence page hierarchy: ' . $e->getMessage());
     }
   }
+
+  public function getPageContent($pageId) {
+    $cacheKey = "confluence_page_content_{$pageId}";
+    if ($this->cache && $cachedData = $this->cache->get($cacheKey)) {
+      return $cachedData;
+    }
+  
+    $url = $this->baseUri . '/rest/api/content/' . $pageId . '?expand=body.view';
+    try {
+      $response = $this->client->get($url, [
+        'headers' => [
+          'Authorization' => 'Basic ' . $this->authToken,
+          'Accept' => 'application/json',
+        ],
+      ]);
+      $data = json_decode($response->getBody(), true);
+  
+      if ($this->cache) {
+        $this->cache->set($cacheKey, $data);
+      }
+  
+      return $data;
+    } catch (RequestException $e) {
+      throw new \Exception('Error fetching Confluence page content: ' . $e->getMessage());
+    }
+  }
 }

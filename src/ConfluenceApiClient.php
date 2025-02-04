@@ -1,6 +1,6 @@
 <?php
 
-namespace YourVendor\ConfluenceApiWrapper;
+namespace jdelon02\ConfluenceApiWrapper;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\RequestException;

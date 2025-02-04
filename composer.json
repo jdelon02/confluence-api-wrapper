@@ -1,5 +1,5 @@
 {
-    "name": "your-vendor/confluence-api-wrapper",
+    "name": "backoffice/confluence-api-wrapper",
     "description": "A PHP wrapper for interacting with the Confluence REST API.",
     "type": "library",
     "license": "MIT",

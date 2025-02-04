@@ -1,0 +1,15 @@
+{
+    "name": "your-vendor/confluence-api-wrapper",
+    "description": "A PHP wrapper for interacting with the Confluence REST API.",
+    "type": "library",
+    "license": "MIT",
+    "require": {
+      "php": ">=8.2",
+      "guzzlehttp/guzzle": "^7.0"
+    },
+    "autoload": {
+      "psr-4": {
+        "YourVendor\\ConfluenceApiWrapper\\": "src/"
+      }
+    }
+  }
